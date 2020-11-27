@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import utils.DataUtil;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -14,12 +15,14 @@ import java.lang.reflect.Method;
 
 public class TestBase {
 
-    private WebDriver driver;
+    public WebDriver driver;
 
     @BeforeMethod
     public void beforeMethod(Method method) {
         driver = Browsers.getChrome();
-        driver.get("");
+
+        String url = DataUtil.readPropertie("url.hml");
+        driver.get(url);
         driver.manage().window().maximize();
         ExtentTestManager.startTest(method.getName());
     }

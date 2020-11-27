@@ -11,15 +11,15 @@ public class LoginObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy()
-    public WebElement cpfCnpj;
+    @FindBy(id = "cpfcnpj")
+    public WebElement cpfCnpjInput;
 
-    @FindBy()
-    public WebElement password;
+    @FindBy(id = "password")
+    public WebElement passwordInput;
 
-    @FindBy()
-    public WebElement cokkies;
+    @FindBy(id = "login-button-home")
+    public WebElement loginButton;
 
-    @FindBy()
-    public WebElement login;
+    @FindBy(id = "dm876A")
+    public WebElement cokkieButton;
 }

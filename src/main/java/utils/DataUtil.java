@@ -12,7 +12,7 @@ public class DataUtil {
         InputStream inputStream;
         Properties prop = new Properties();
         try {
-            String filePath = System.getProperty("user.dir") + "/config.properties";
+            String filePath = System.getProperty("user.dir") + "/src/main/resources/config.properties";
 
             inputStream = DataUtil.class.getClassLoader().getResourceAsStream(filePath);
 

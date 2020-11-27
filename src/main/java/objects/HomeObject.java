@@ -5,21 +5,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomeObject {
 
     public HomeObject(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy()
-    private WebElement cpfCnpj;
+    @FindBy(xpath = "//p[text()='Fique por dentro!']")
+    public WebElement popUpText;
 
-    @FindBy()
-    private WebElement password;
+    @FindBy(css = "a[ng-click='close()']")
+    public WebElement seeMyMessagesButton;
 
-    @FindBy()
-    private WebElement cokkies;
+    @FindBy(css = "ul[id='ulMenuCdc'] strong[class='ng-binding']")
+    public WebElement cdcContractText;
 
-    @FindBy()
-    private WebElement login;
+    @FindBy(xpath = "//ul[@class='submenu leasing']/li/a")
+    public List<WebElement> operationOptions;
 }
