@@ -5,6 +5,7 @@ import objects.LoginObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
+import utils.Utils;
 
 public class HomePage {
 
@@ -20,6 +21,7 @@ public class HomePage {
     public void accessOperation(){
         wait.elementToBeVisibility(home.popUpText).isDisplayed();
         wait.elementToBeClickable(home.seeMyMessagesButton).click();
+        Utils.sleep();
         wait.elementToBeClickable(home.cdcContractText).click();
         wait.interactElementWithText(home.operationOptions, "REORGANIZAÇÃO FINANCEIRA").click();
     }
