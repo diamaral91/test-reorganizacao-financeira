@@ -22,6 +22,12 @@ public class HomeObject {
     @FindBy(css = "ul[id='ulMenuCdc'] strong[class='ng-binding']")
     public WebElement cdcContractText;
 
+    @FindBy(id = "filterContractsCDCInputMenu")
+    public WebElement filterContractInput;
+
     @FindBy(xpath = "//ul[@class='submenu leasing']/li/a")
     public List<WebElement> operationOptions;
+
+    @FindBy(css = "[data-ng-click='botaoSim()']")
+    public WebElement yesBtn;
 }

@@ -8,6 +8,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.DataUtil;
+import utils.ScreenshotUtil;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -21,9 +22,10 @@ public class TestBase {
     public void beforeMethod(Method method) {
         driver = Browsers.getChrome();
 
-        String url = DataUtil.readPropertie("url.hml");
+        String url = DataUtil.readPropertie("url.hml.renault");
         driver.get(url);
         driver.manage().window().maximize();
+
         ExtentTestManager.startTest(method.getName());
     }
 
@@ -36,7 +38,8 @@ public class TestBase {
         } else {
             ExtentTestManager.getTest().log(LogStatus.PASS, "Test passed");
         }
-
+        ExtentTestManager.getTest().log(LogStatus.INFO,
+                ExtentTestManager.getTest().addBase64ScreenShot(ScreenshotUtil.captureEvidence(driver)));
         ExtentManager.getReporter().endTest(ExtentTestManager.getTest());
         ExtentManager.getReporter().flush();
     }

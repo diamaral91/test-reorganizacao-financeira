@@ -1,7 +1,6 @@
 package pages;
 
 import objects.HomeObject;
-import objects.LoginObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
@@ -18,11 +17,14 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void accessOperation(){
+    public void accessOperation(String contract){
         wait.elementToBeVisibility(home.popUpText).isDisplayed();
         wait.elementToBeClickable(home.seeMyMessagesButton).click();
         Utils.sleep();
+        wait.elementToBeVisibility(home.filterContractInput).sendKeys(contract);
+        Utils.sleep();
         wait.elementToBeClickable(home.cdcContractText).click();
         wait.interactElementWithText(home.operationOptions, "REORGANIZAÇÃO FINANCEIRA").click();
+        wait.elementToBeClickable(home.yesBtn).click();
     }
 }

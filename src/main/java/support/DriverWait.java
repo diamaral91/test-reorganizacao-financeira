@@ -1,14 +1,12 @@
 package support;
 
-import org.openqa.selenium.ElementNotSelectableException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 public class DriverWait {
 
@@ -16,15 +14,22 @@ public class DriverWait {
     private int timeOut = 10;
 
     public DriverWait(WebDriver driver){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        waitForJavaScriptCondition(driver);
+        waitForJQueryProcessing(driver);
         wait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(timeOut))
                 .pollingEvery(Duration.ofSeconds(1))
-                .ignoring(NoSuchFieldException.class)
+                .ignoring(NoSuchElementException.class)
                 .ignoring(ElementNotSelectableException.class);
     }
 
     public WebElement elementToBeClickable(WebElement element){
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public Select elementToBeSelectionState(WebElement element){
+        return new Select(element);
     }
 
     public WebElement elementToBeVisibility(WebElement element){
@@ -44,5 +49,42 @@ public class DriverWait {
         }
         new RuntimeException(text + "nao encontrado");
         return null;
+    }
+
+    private DriverWait waitForJavaScriptCondition(WebDriver driver) {
+        boolean jscondition = false;
+        String javaScript = "return (xmlhttp.readyState >= 2 && xmlhttp.status == 200)";
+        try{
+            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+            new WebDriverWait(driver, timeOut) {
+            }.until(new ExpectedCondition<Boolean>() {
+
+                @Override
+                public Boolean apply(WebDriver driverObject) {
+                    return (Boolean) ((JavascriptExecutor) driverObject).executeScript(javaScript);
+                }
+            });
+            jscondition =  (Boolean) ((JavascriptExecutor) driver).executeScript(javaScript);
+            driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS); //reset implicitlyWait
+        } catch (JavascriptException e) { }
+        return this;
+    }
+
+    private DriverWait waitForJQueryProcessing(WebDriver driver){
+        boolean jQcondition = false;
+        try{
+            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS); //nullify implicitlyWait()
+            new WebDriverWait(driver, timeOut) {
+            }.until(new ExpectedCondition<Boolean>() {
+
+                @Override
+                public Boolean apply(WebDriver driverObject) {
+                    return (Boolean) ((JavascriptExecutor) driverObject).executeScript("return jQuery.active == 0");
+                }
+            });
+            jQcondition = (Boolean) ((JavascriptExecutor) driver).executeScript("return jQuery.active == 0");
+            driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS); //reset implicitlyWait
+        } catch (Exception e) { }
+        return this;
     }
 }

@@ -17,9 +17,9 @@ public class LoginPage {
     }
 
     public void login(String cpfCnpj){
-        wait.elementToBeVisibility(loginObject.cokkieButton).click();
+        wait.elementToBeClickable(loginObject.cokkieButton).click();
         wait.elementToBeVisibility(loginObject.cpfCnpjInput).sendKeys(cpfCnpj);
         wait.elementToBeVisibility(loginObject.passwordInput).sendKeys("Rci@123*");
-        wait.elementToBeVisibility(loginObject.loginButton).click();
+        wait.elementToBeClickable(loginObject.loginButton).click();
     }
 }

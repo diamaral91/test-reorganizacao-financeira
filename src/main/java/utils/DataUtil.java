@@ -4,6 +4,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import extentReport.ExtentTestManager;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -13,16 +14,12 @@ import java.util.Properties;
 public class DataUtil {
 
     public static String readPropertie(String propertie){
-        InputStream inputStream;
         Properties prop = new Properties();
         try {
             String filePath = System.getProperty("user.dir") + "/src/main/resources/config.properties";
+            InputStream inputStream = new FileInputStream(filePath);
 
-            inputStream = DataUtil.class.getClassLoader().getResourceAsStream(filePath);
-
-            if (inputStream != null) {
-                prop.load(inputStream);
-            }
+            prop.load(inputStream);
 
             inputStream.close();
         } catch (Exception e) {
@@ -34,21 +31,23 @@ public class DataUtil {
     public static List<String> readCsv(String field){
         List<String> values = new ArrayList<>();
 
+        String pathToCsv = System.getProperty("user.dir") + "/src/main/resources/datapool.csv";
         try {
-            BufferedReader csvReader = new BufferedReader(new FileReader("pathToCsv"));
+            BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
             String row = "";
             while ((row = csvReader.readLine()) != null) {
                 String[] data = row.split(",");
                 if ("cpfCnpj".equalsIgnoreCase(field)) {
-                    values.add(data[0]);
-                } else if ("senha".equalsIgnoreCase(field)) {
                     values.add(data[1]);
+                } else if ("contrato".equalsIgnoreCase(field)) {
+                    values.add(data[0]);
                 }
             }
             csvReader.close();
         } catch (Exception e) {
             ExtentTestManager.getTest().log(LogStatus.ERROR, "field not found: " + field);
         }
+        values.remove(0);
         return values;
     }
 }

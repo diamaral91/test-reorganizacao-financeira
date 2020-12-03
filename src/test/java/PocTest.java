@@ -9,22 +9,22 @@ import support.TestBase;
 import utils.DataUtil;
 import utils.ScreenshotUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PocTest extends TestBase {
 
     @Test
     public void poc(){
-        List<String> cpfsCnpjs = new ArrayList<>();
-        for(String cpfCnpj : cpfsCnpjs) {
+        List<String> cpfsCnpjs = DataUtil.readCsv("cpfCnpj");
+        List<String> contracts = DataUtil.readCsv("cpfCnpj");
+        for(int count=0; count < cpfsCnpjs.size(); count++) {
             try {
                 LoginPage login = new LoginPage(driver);
-                login.login("");
+                login.login(cpfsCnpjs.get(count));
 
                 HomePage home = new HomePage(driver);
-                home.accessOperation();
-            } catch (WebDriverException e) {
+                home.accessOperation(contracts.get(count));
+            } catch (WebDriverException | NullPointerException e) {
                 ExtentTestManager.getTest().log(LogStatus.FAIL,
                         ExtentTestManager.getTest().addScreencast(ScreenshotUtil.captureEvidence(driver)));
             }
