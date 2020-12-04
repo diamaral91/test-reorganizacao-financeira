@@ -5,13 +5,12 @@ import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class DriverWait {
 
     private Wait<WebDriver> wait;
-    private int timeOut = 10;
+    private int timeOut = 20;
 
     public DriverWait(WebDriver driver){
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -34,6 +33,10 @@ public class DriverWait {
 
     public WebElement elementToBeVisibility(WebElement element){
         return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public Boolean textToBePresentInElement(WebElement element, String text) {
+        return wait.until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 
     public List<WebElement> elementsToBeVisibility(List<WebElement> element){

@@ -19,4 +19,13 @@ public class CurrentInformationObject {
 
     @FindBy(css = "[ng-click='consultSimulation()']")
     public WebElement consultSimulationBtn;
+
+    @FindBy(xpath = "//label[text()='Nº do financiamento']/parent::div/span")
+    public WebElement fundingNumber;
+
+    @FindBy(xpath = "//label[text()='Forma de pagamento']/parent::div/span")
+    public WebElement formPayment;
+
+    @FindBy(css = "[ng-click='consultSimulation()']")
+    public WebElement consultSimulation;
 }

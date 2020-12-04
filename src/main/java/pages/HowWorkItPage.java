@@ -1,5 +1,7 @@
 package pages;
 
+import com.relevantcodes.extentreports.LogStatus;
+import extentReport.ExtentTestManager;
 import objects.HowWorkItObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -18,5 +20,6 @@ public class HowWorkItPage {
 
     public void simulateRenegotiation(){
         wait.elementToBeVisibility(howWorkIt.simulateRenegotiationBtn).click();
+        ExtentTestManager.getTest().log(LogStatus.INFO, "simulate renegociation");
     }
 }

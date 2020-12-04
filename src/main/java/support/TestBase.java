@@ -42,6 +42,8 @@ public class TestBase {
                 ExtentTestManager.getTest().addBase64ScreenShot(ScreenshotUtil.captureEvidence(driver)));
         ExtentManager.getReporter().endTest(ExtentTestManager.getTest());
         ExtentManager.getReporter().flush();
+
+        driver.quit();
     }
 
     protected String getStackTrace(Throwable t) {

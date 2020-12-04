@@ -19,7 +19,7 @@ public class DateUtil {
         c.setTime(dataVencimento);
         c.add(Calendar.DATE, +10);
 
-        System.out.println(c.getTime().toString());
-        return c.getTime().toString();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.format(c.getTime());
     }
 }

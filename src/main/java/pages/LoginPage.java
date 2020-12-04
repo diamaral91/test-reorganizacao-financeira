@@ -1,5 +1,7 @@
 package pages;
 
+import com.relevantcodes.extentreports.LogStatus;
+import extentReport.ExtentTestManager;
 import objects.LoginObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -21,5 +23,7 @@ public class LoginPage {
         wait.elementToBeVisibility(loginObject.cpfCnpjInput).sendKeys(cpfCnpj);
         wait.elementToBeVisibility(loginObject.passwordInput).sendKeys("Rci@123*");
         wait.elementToBeClickable(loginObject.loginButton).click();
+
+        ExtentTestManager.getTest().log(LogStatus.INFO, "login: " + cpfCnpj);
     }
 }

@@ -1,5 +1,7 @@
 package pages;
 
+import com.relevantcodes.extentreports.LogStatus;
+import extentReport.ExtentTestManager;
 import objects.HomeObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -26,5 +28,7 @@ public class HomePage {
         wait.elementToBeClickable(home.cdcContractText).click();
         wait.interactElementWithText(home.operationOptions, "REORGANIZAÇÃO FINANCEIRA").click();
         wait.elementToBeClickable(home.yesBtn).click();
+
+        ExtentTestManager.getTest().log(LogStatus.INFO, "accessOperation: " + contract);
     }
 }
