@@ -30,9 +30,10 @@ public class CurrentInformationPage {
 
 
     public void selectBestOption(){
-        wait.elementToBeSelectionState(currentInformation.newInstallmentSelect).selectByVisibleText("5");
+        String day = new DateUtil("dd").nextDate(+3);
+        wait.elementToBeSelectionState(currentInformation.newInstallmentSelect).selectByVisibleText(day);
 
-        String firstDueDate = DateUtil.firstDueDate();
+        String firstDueDate = new DateUtil("dd/MM/yyyy").nextDate(+10);
         wait.elementToBeSelectionState(currentInformation.firstDueDateSelect).selectByVisibleText(firstDueDate);
         wait.elementToBeClickable(currentInformation.firstDueDateSelect).click();
         wait.elementToBeClickable(currentInformation.consultSimulation).click();

@@ -22,4 +22,10 @@ public class FillDetailsBelowObject {
 
     @FindBy(id = "success")
     public WebElement msgSuccessText;
+
+    @FindBy(css = "[ng-click='viewAditivoReorg()']")
+    public WebElement viewAditivoReorg;
+
+    @FindBy(css = "[ng-click='viewCetReorg()']")
+    public WebElement viewCetReorg;
 }

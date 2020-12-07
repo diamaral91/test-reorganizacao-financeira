@@ -6,20 +6,26 @@ import java.util.Date;
 
 public class DateUtil {
 
-    public static String dateTime(String format){
+    private String format;
+
+    public DateUtil(String format) {
+        this.format = format;
+    }
+
+    public String dateTime(){
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
         return simpleDateFormat.format(date);
     }
 
-    public static String firstDueDate(){
-        Date dataVencimento = new Date();
+    public String nextDate(int amount){
+        Date date = new Date();
 
-        Calendar c = Calendar.getInstance();
-        c.setTime(dataVencimento);
-        c.add(Calendar.DATE, +10);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, amount);
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return simpleDateFormat.format(c.getTime());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        return simpleDateFormat.format(calendar.getTime());
     }
 }
