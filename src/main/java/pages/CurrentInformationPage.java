@@ -28,11 +28,22 @@ public class CurrentInformationPage {
         return this;
     }
 
+    private boolean typeNewinstallment() {
+        int count = 5;
+        while (count < 50) {
+            try {
+                wait.elementToBeSelectionState(currentInformation.newInstallmentSelect).selectByVisibleText(String.valueOf(count));
+                return true;
+            } catch (Exception e) {
+                System.out.println("value not found");
+            }
+            count = count+5;
+        }
+        throw new RuntimeException();
+    }
 
     public void selectBestOption(){
-        String day = new DateUtil("dd").nextDate(+3);
-        wait.elementToBeSelectionState(currentInformation.newInstallmentSelect).selectByVisibleText(day);
-
+        typeNewinstallment();
         String firstDueDate = new DateUtil("dd/MM/yyyy").nextDate(+10);
         wait.elementToBeSelectionState(currentInformation.firstDueDateSelect).selectByVisibleText(firstDueDate);
         wait.elementToBeClickable(currentInformation.firstDueDateSelect).click();

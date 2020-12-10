@@ -8,11 +8,11 @@ public class RenegotiationTest extends TestBase {
     @Test
     public void poc(){
         LoginPage login = new LoginPage(driver);
-        login.login("07866156000107");
+        login.login("10360865852");
 
         HomePage home = new HomePage(driver);
 
-        String contract = "32308450";
+        String contract = "31131613";
         home.accessOperation(contract);
 
         HowWorkItPage howWorkIt = new HowWorkItPage(driver);
@@ -30,8 +30,8 @@ public class RenegotiationTest extends TestBase {
 
         String message = fillDetailsBelow.completeProcess();
 
-        String expectedResult = "ReorganizaÁ„o realizada com sucesso!\n" +
-                "Os documentos ser„o enviados para o e-mail informado. Isso pode levar atÈ 30min. Certifique-se de verificar sua caixa de spam.\n" +
+        String expectedResult = "Reorganiza√ß√£o realizada com sucesso!\n" +
+                "Os documentos ser√£o enviados para o e-mail informado. Isso pode levar at√© 30min. Certifique-se de verificar sua caixa de spam.\n" +
                 "FECHAR";
 
         Assert.assertEquals(message, expectedResult);
