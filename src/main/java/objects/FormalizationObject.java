@@ -11,7 +11,7 @@ public class FormalizationObject {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//h3[text()='Formalização']")
+    @FindBy(xpath = "//h3[contains(text(),'Formaliza')]")
     public WebElement formalizationText;
 
     @FindBy(css = "//label[text()='Novo valor da parcela']/parent::div/span")

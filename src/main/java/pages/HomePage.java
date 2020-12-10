@@ -26,7 +26,7 @@ public class HomePage {
         wait.elementToBeVisibility(home.filterContractInput).sendKeys(contract);
         Utils.sleep();
         wait.elementToBeClickable(home.cdcContractText).click();
-        wait.interactElementWithText(home.operationOptions, "REORGANIZA√á√ÉO FINANCEIRA").click();
+        wait.interactElementWithText(home.operationOptions, "REORGANIZA«√O FINANCEIRA").click();
         wait.elementToBeClickable(home.yesBtn).click();
 
         ExtentTestManager.getTest().log(LogStatus.INFO, "accessOperation: " + contract);

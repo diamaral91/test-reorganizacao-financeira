@@ -3,16 +3,16 @@ import org.testng.annotations.Test;
 import pages.*;
 import support.TestBase;
 
-public class Poc2Test extends TestBase {
+public class RenegotiationTest extends TestBase {
 
     @Test
     public void poc(){
         LoginPage login = new LoginPage(driver);
-        login.login("02671595000566");
+        login.login("07866156000107");
 
         HomePage home = new HomePage(driver);
 
-        String contract = "32920252";
+        String contract = "32308450";
         home.accessOperation(contract);
 
         HowWorkItPage howWorkIt = new HowWorkItPage(driver);
@@ -30,8 +30,8 @@ public class Poc2Test extends TestBase {
 
         String message = fillDetailsBelow.completeProcess();
 
-        String expectedResult = "Reorganiza√ß√£o realizada com sucesso!\n" +
-                "Os documentos ser√£o enviados para o e-mail informado. Isso pode levar at√© 30min. Certifique-se de verificar sua caixa de spam.\n" +
+        String expectedResult = "ReorganizaÁ„o realizada com sucesso!\n" +
+                "Os documentos ser„o enviados para o e-mail informado. Isso pode levar atÈ 30min. Certifique-se de verificar sua caixa de spam.\n" +
                 "FECHAR";
 
         Assert.assertEquals(message, expectedResult);

@@ -6,6 +6,7 @@ import objects.FillDetailsBelowObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
+import utils.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -34,7 +35,9 @@ public class FillDetailsBelowPage {
 
     public FillDetailsBelowPage openDocuments(){
         wait.elementToBeClickable(fillDetailsBelow.viewAditivoReorg).click();
+        Utils.sleep();
         wait.elementToBeClickable(fillDetailsBelow.viewCetReorg).click();
+        Utils.sleep();
         return this;
     }
 
