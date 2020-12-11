@@ -6,13 +6,13 @@ import support.TestBase;
 public class RenegotiationTest extends TestBase {
 
     @Test
-    public void poc(){
+    public void renegotiation(){
         LoginPage login = new LoginPage(driver);
-        login.login("10360865852");
+        login.login("11571480773");
 
         HomePage home = new HomePage(driver);
 
-        String contract = "31131613";
+        String contract = "20031143901";
         home.accessOperation(contract);
 
         HowWorkItPage howWorkIt = new HowWorkItPage(driver);

@@ -2,6 +2,7 @@ package support;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
+import utils.Utils;
 
 import java.time.Duration;
 import java.util.List;
@@ -20,11 +21,25 @@ public class DriverWait {
                 .withTimeout(Duration.ofSeconds(timeOut))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class)
+                .ignoring(ElementClickInterceptedException.class)
                 .ignoring(ElementNotSelectableException.class);
     }
 
     public WebElement elementToBeClickable(WebElement element){
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitToElementClickNotIntercepted(WebElement element){
+        int count =0;
+        while(count < 10) {
+            try {
+                elementToBeClickable(element).click();
+                break;
+            } catch (ElementClickInterceptedException e) {
+                Utils.sleep();
+                count++;
+            }
+        }
     }
 
     public Select elementToBeSelectionState(WebElement element){

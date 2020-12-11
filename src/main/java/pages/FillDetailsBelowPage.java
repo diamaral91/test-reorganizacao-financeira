@@ -35,8 +35,7 @@ public class FillDetailsBelowPage {
 
     public FillDetailsBelowPage openDocuments(){
         wait.elementToBeClickable(fillDetailsBelow.viewAditivoReorg).click();
-        Utils.sleep();
-        wait.elementToBeClickable(fillDetailsBelow.viewCetReorg).click();
+        wait.waitToElementClickNotIntercepted(fillDetailsBelow.viewCetReorg);
         Utils.sleep();
         return this;
     }
@@ -44,8 +43,8 @@ public class FillDetailsBelowPage {
     public boolean checkDocuments(){
         boolean validate = false;
 
-        String aditivo = "Aditivo - ReorganizaÃ§Ã£o Financeira.pdf";
-        String cet = "CET - ReorganizaÃ§Ã£o Financeira.pdf";
+        String aditivo = "Aditivo - Reorganização Financeira.pdf";
+        String cet = "CET - Reorganização Financeira.pdf";
         String userPath = System.getProperty("user.home");
         String folder = "/Downloads/";
 

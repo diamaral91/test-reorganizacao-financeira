@@ -3,6 +3,8 @@ package pages;
 import com.relevantcodes.extentreports.LogStatus;
 import extentReport.ExtentTestManager;
 import objects.HomeObject;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
@@ -23,11 +25,7 @@ public class HomePage {
         try{
             wait.elementToBeVisibility(home.popUpText).isDisplayed();
             wait.elementToBeClickable(home.seeMyMessagesButton).click();
-            Utils.sleep();
-            wait.elementToBeVisibility(home.filterContractInput).sendKeys(contract);
-            Utils.sleep();
-            wait.elementToBeClickable(home.cdcContractText).click();
-        } catch (Exception e) {
+        } catch (TimeoutException e) {
             wait.interactElementWithText(home.contractsList, contract).click();
         }
         wait.interactElementWithText(home.operationOptions, "REORGANIZAÇÃO FINANCEIRA").click();

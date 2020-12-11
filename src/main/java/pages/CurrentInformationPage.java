@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
 import utils.DateUtil;
+import utils.Utils;
 
 public class CurrentInformationPage {
 
@@ -16,12 +17,12 @@ public class CurrentInformationPage {
     public CurrentInformationPage(WebDriver driver){
         wait = new DriverWait(driver);
         currentInformation = new CurrentInformationObject(driver);
+        Utils.scrollDown(driver);
         PageFactory.initElements(driver, this);
     }
 
     public CurrentInformationPage summaryOfCurrentFunding(String contract, String payment){
-        String number = "200" + contract;
-        wait.textToBePresentInElement(currentInformation.fundingNumber, number);
+        wait.textToBePresentInElement(currentInformation.fundingNumber, contract);
         wait.textToBePresentInElement(currentInformation.formPayment, payment);
 
         ExtentTestManager.getTest().log(LogStatus.INFO, "payment: " + payment);
@@ -30,7 +31,7 @@ public class CurrentInformationPage {
 
     private boolean typeNewinstallment() {
         int count = 5;
-        while (count < 50) {
+        while (count < 100) {
             try {
                 wait.elementToBeSelectionState(currentInformation.newInstallmentSelect).selectByVisibleText(String.valueOf(count));
                 return true;
