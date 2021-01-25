@@ -68,6 +68,8 @@ public class DataUtil {
                 try {
                     List<String> abas = new ArrayList<>(driver.getWindowHandles());
                     driver.switchTo().window(abas.get(1)).quit();
+                    ExtentTestManager.getTest().log(LogStatus.INFO, "closed tab");
+                    return true;
                 } catch (IndexOutOfBoundsException e) {
                     count++;
                     Utils.sleep(1);

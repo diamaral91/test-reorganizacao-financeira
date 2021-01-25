@@ -20,16 +20,28 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
+    public HomePage closePopUp(){
+        wait.elementToBeVisibility(home.popUpText).isDisplayed();
+        wait.elementToBeClickable(home.seeMyMessagesButton).click();
+        ExtentTestManager.getTest().log(LogStatus.INFO, "close pop up");
+        return this;
+    }
+
+    public HomePage clickHomePage(){
+        wait.elementToBeClickable(home.homePageButton).click();
+        ExtentTestManager.getTest().log(LogStatus.INFO, "access home page");
+        return this;
+    }
+
     public HomePage selectContract(String contract){
-        try{
-            wait.elementToBeVisibility(home.popUpText).isDisplayed();
-            wait.elementToBeClickable(home.seeMyMessagesButton).click();
-            wait.interactElementWithText(home.contractsList, contract).click();
-        } catch (TimeoutException e) {
-            wait.interactElementWithText(home.contractsList, contract).click();
-        }
+        wait.interactElementWithText(home.contractsList, contract).click();
         ExtentTestManager.getTest().log(LogStatus.INFO, "contract: " + contract);
         return this;
+    }
+
+    public void selectInformation(OperationsEnum info){
+        wait.interactElementWithText(home.importantInfoButton, info.getOperation()).click();
+        ExtentTestManager.getTest().log(LogStatus.INFO, "select info:" + info);
     }
 
     public HomePage accessFinancialReorganization(){

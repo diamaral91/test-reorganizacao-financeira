@@ -19,6 +19,9 @@ public class HomeObject {
     @FindBy(css = "a[ng-click='close()']")
     public WebElement seeMyMessagesButton;
 
+    @FindBy(xpath = "//a[text()='Homepage']")
+    public WebElement homePageButton;
+
     @FindBy(css = "ul[id='ulMenuCdc'] strong[class='ng-binding']")
     public WebElement cdcContractText;
 
@@ -33,4 +36,7 @@ public class HomeObject {
 
     @FindBy(css = "[data-ng-click='botaoSim()']")
     public WebElement yesBtn;
+
+    @FindBy(css = "[ng-click='handleGenericClick(item)']")
+    public List<WebElement> importantInfoButton;
 }

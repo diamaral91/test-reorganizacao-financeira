@@ -8,6 +8,7 @@ public enum OperationsEnum {
     CARTA_IMPOSTO_RENDA("CARTA DE IMPOSTO DE RENDA"),
     PLANILHA_CALCULO("PLANILHA DE CÁLCULO"),
     CARTA_COMPROVACAO_PAGAMENTO("CARTA DE COMPROVAÇÃO DE PAGAMENTO"),
+    ENCERRANDO_LEASING("Encerrando meu Leasing"),
     BOLETO("Boleto");
 
     private String operation;

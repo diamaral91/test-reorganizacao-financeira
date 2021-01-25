@@ -32,5 +32,3 @@ public class CartaImpostoRendaTest extends TestBase {
         Assert.assertTrue(DataUtil.checkFile(driver, "CARTAO_IMPOSTO_RENDA.pdf"));
     }
 }
-
-//CARTA DE COMPROVAC?A?O DE PAGAMENTO
