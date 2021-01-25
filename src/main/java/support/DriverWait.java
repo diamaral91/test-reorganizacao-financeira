@@ -17,6 +17,7 @@ public class DriverWait {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         waitForJavaScriptCondition(driver);
         waitForJQueryProcessing(driver);
+        Utils.sleep(1);
         wait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(timeOut))
                 .pollingEvery(Duration.ofSeconds(1))
@@ -55,6 +56,7 @@ public class DriverWait {
     }
 
     public List<WebElement> elementsToBeVisibility(List<WebElement> element){
+        Utils.sleep(1);
         return wait.until(ExpectedConditions.visibilityOfAllElements(element));
     }
 

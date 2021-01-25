@@ -1,0 +1,19 @@
+package objects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class ContractInstallmentsObject {
+
+    public ContractInstallmentsObject(WebDriver driver){
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(css = "a[ng-click='gerarBoletoPDF()']")
+    public WebElement gerarBoleto;
+
+    @FindBy(css = "h2[class='dvTituloListagem']")
+    public WebElement tituloListagem;
+}

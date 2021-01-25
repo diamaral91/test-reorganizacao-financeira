@@ -1,5 +1,6 @@
 package support;
 
+import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 import extentReport.ExtentManager;
 import extentReport.ExtentTestManager;
@@ -17,6 +18,7 @@ import java.lang.reflect.Method;
 public class TestBase {
 
     public WebDriver driver;
+    private ExtentReports extent = null;
 
     @BeforeMethod
     public void beforeMethod(Method method) {
@@ -38,8 +40,11 @@ public class TestBase {
         } else {
             ExtentTestManager.getTest().log(LogStatus.PASS, "Test passed");
         }
-        ExtentTestManager.getTest().log(LogStatus.INFO,
-                ExtentTestManager.getTest().addBase64ScreenShot(ScreenshotUtil.captureEvidence(driver)));
+
+        ExtentTestManager.getTest().log(LogStatus.INFO, ExtentTestManager.getTest()
+                .addBase64ScreenShot(ScreenshotUtil.captureEvidence(driver)
+                ));
+
         ExtentManager.getReporter().endTest(ExtentTestManager.getTest());
         ExtentManager.getReporter().flush();
 

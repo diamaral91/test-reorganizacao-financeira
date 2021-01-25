@@ -1,16 +1,11 @@
 package pages;
 
-import com.relevantcodes.extentreports.LogStatus;
-import extentReport.ExtentTestManager;
 import objects.FillDetailsBelowObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
+import utils.DataUtil;
 import utils.Utils;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FillDetailsBelowPage {
 
@@ -45,25 +40,9 @@ public class FillDetailsBelowPage {
 
         String aditivo = "Aditivo - Reorganização Financeira.pdf";
         String cet = "CET - Reorganização Financeira.pdf";
-        String userPath = System.getProperty("user.home");
-        String folder = "/Downloads/";
 
-        try {
-            File aditivoFile = new File(userPath + folder + aditivo);
-            validate = aditivoFile.exists();
-            ExtentTestManager.getTest().log(LogStatus.INFO, "file: " + aditivo + " " + validate);
-
-            File cetFile = new File(userPath + folder + cet);
-            validate = cetFile.exists();
-            ExtentTestManager.getTest().log(LogStatus.INFO, "file: " + cet + " " + validate);
-
-            aditivoFile.delete();
-            cetFile.delete();
-        } catch (Exception e) {
-            List<String> abas = new ArrayList<>(driver.getWindowHandles());
-            driver.switchTo().window(abas.get(1)).quit();
-            driver.switchTo().window(abas.get(2)).quit();
-        }
+        validate = DataUtil.checkFile(driver, aditivo);
+        validate = DataUtil.checkFile(driver, cet);
 
         return validate;
     }

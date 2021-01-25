@@ -2,18 +2,22 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 import support.TestBase;
+import utils.DataUtil;
 
 public class RenegotiationTest extends TestBase {
 
     @Test
     public void renegotiation(){
+
+        String cpfCnpj = DataUtil.readPropertie("cpfCnpj");
+
         LoginPage login = new LoginPage(driver);
-        login.login("11571480773");
+        login.login(cpfCnpj);
+
+        String contract = DataUtil.readPropertie("contractNumber");
 
         HomePage home = new HomePage(driver);
-
-        String contract = "20031143901";
-        home.accessOperation(contract);
+        home.selectContract(contract).accessFinancialReorganization().confirmContract();
 
         HowWorkItPage howWorkIt = new HowWorkItPage(driver);
         howWorkIt.simulateRenegotiation();
