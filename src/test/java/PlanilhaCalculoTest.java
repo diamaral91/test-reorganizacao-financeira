@@ -21,7 +21,7 @@ public class PlanilhaCalculoTest extends TestBase {
         String contract = DataUtil.readPropertie("contractNumber");
 
         HomePage home = new HomePage(driver);
-        home.selectContract(contract).accessOperation(OperationsEnum.CARTAS_E_DOCUMENTOS).confirmContract();
+        home.closePopUp().selectContract(contract).accessOperation(OperationsEnum.CARTAS_E_DOCUMENTOS).confirmContract();
 
         LettersAndDocumentsPage lettersAndDocuments = new LettersAndDocumentsPage(driver);
         lettersAndDocuments.selectLetterOrDocument(OperationsEnum.PLANILHA_CALCULO).request();

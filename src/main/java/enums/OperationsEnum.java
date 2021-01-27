@@ -9,6 +9,8 @@ public enum OperationsEnum {
     PLANILHA_CALCULO("PLANILHA DE CÁLCULO"),
     CARTA_COMPROVACAO_PAGAMENTO("CARTA DE COMPROVAÇÃO DE PAGAMENTO"),
     ENCERRANDO_LEASING("Encerrando meu Leasing"),
+    HISTORICO_SOLICITACOES("HISTÓRICO DE SOLICITAÇÕES"),
+    VIA_CONTRATO("VIA DE CONTRATO"),
     BOLETO("Boleto");
 
     private String operation;

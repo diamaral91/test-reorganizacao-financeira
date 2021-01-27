@@ -8,10 +8,10 @@ import pages.LoginPage;
 import support.TestBase;
 import utils.DataUtil;
 
-public class CartaImpostoRendaTest extends TestBase {
+public class HistoricoAtualizacoesTest extends TestBase {
 
     @Test
-    public void planilhaCalculo(){
+    public void historicoAtualizacoes(){
 
         String cpfCnpj = DataUtil.readPropertie("cpfCnpj");
 
@@ -21,14 +21,14 @@ public class CartaImpostoRendaTest extends TestBase {
         String contract = DataUtil.readPropertie("contractNumber");
 
         HomePage home = new HomePage(driver);
-        home.closePopUp().selectContract(contract).accessOperation(OperationsEnum.CARTAS_E_DOCUMENTOS).confirmContract();
+        home.closePopUp().selectContract(contract).accessOperation(OperationsEnum.HISTORICO_SOLICITACOES).confirmContract();
 
         LettersAndDocumentsPage lettersAndDocuments = new LettersAndDocumentsPage(driver);
-        lettersAndDocuments.selectLetterOrDocument(OperationsEnum.CARTA_IMPOSTO_RENDA).request();
+        lettersAndDocuments.selectLetterOrDocument(OperationsEnum.PLANILHA_CALCULO).request();
 
         CalculationWorksheetPage calculationWorksheetPage = new CalculationWorksheetPage(driver);
         calculationWorksheetPage.downloadPdf();
 
-        Assert.assertTrue(DataUtil.checkFile(driver, "CARTAO_IMPOSTO_RENDA.pdf"));
+        Assert.assertTrue(DataUtil.checkFile(driver, "PLANILHA_DE_CALCULO.pdf"));
     }
 }

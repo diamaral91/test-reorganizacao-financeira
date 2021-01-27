@@ -25,7 +25,7 @@ public class RenegotiationsTest extends TestBase {
                 HomePage home = new HomePage(driver);
 
                 String contract = contracts.get(count);
-                home.selectContract(contract).accessFinancialReorganization().confirmContract();
+                home.closePopUp().selectContract(contract).accessFinancialReorganization().confirmContract();
 
                 HowWorkItPage howWorkIt = new HowWorkItPage(driver);
                 howWorkIt.simulateRenegotiation();

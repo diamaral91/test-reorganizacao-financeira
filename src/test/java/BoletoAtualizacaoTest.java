@@ -20,7 +20,7 @@ public class BoletoAtualizacaoTest extends TestBase {
         String contract = DataUtil.readPropertie("contractNumber");
 
         HomePage home = new HomePage(driver);
-        home.selectContract(contract).accessOperation(OperationsEnum.BOLETO_ATUALIZADO);
+        home.closePopUp().selectContract(contract).accessOperation(OperationsEnum.BOLETO_ATUALIZADO);
 
         ContractInstallmentsPage contractInstallments = new ContractInstallmentsPage(driver);
         contractInstallments.generateContract();

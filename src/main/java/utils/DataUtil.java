@@ -4,12 +4,16 @@ import com.relevantcodes.extentreports.LogStatus;
 import extentReport.ExtentTestManager;
 import org.openqa.selenium.WebDriver;
 
+import javax.annotation.MatchesPattern;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 public class DataUtil {
+
+    private static String userPath = System.getProperty("user.home");
+    private static String folder = "/Downloads/";
 
     public static String readPropertie(String propertie){
         Properties prop = new Properties();
@@ -53,12 +57,9 @@ public class DataUtil {
         boolean validate = false;
         int count = 0;
 
-        String userPath = System.getProperty("user.home");
-        String folder = "/Downloads/";
-
         while(count < 10) {
-                File file = new File(userPath + folder + fileName);
-                validate = file.exists();
+            File file = new File(userPath + folder + fileName);
+            validate = file.exists();
 
             if(validate == true) {
                 ExtentTestManager.getTest().log(LogStatus.INFO, "file: " + fileName + " " + validate);
@@ -78,5 +79,28 @@ public class DataUtil {
         }
 
         return validate;
+    }
+
+    public static boolean findFile(String name){
+        List<String> files = readFiles();
+        for(String file : files) {
+            if(file.matches(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static List<String> readFiles() {
+        List<String> filesName = new ArrayList<>();
+
+        File file = new File(userPath + folder);
+        File afile[] = file.listFiles();
+        int i = 0;
+        for (int j = afile.length; i < j; i++) {
+            File arquivos = afile[i];
+            filesName.add(arquivos.getName());
+        }
+        return filesName;
     }
 }

@@ -3,15 +3,16 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CalculationWorksheetPage;
 import pages.HomePage;
-import pages.LettersAndDocumentsPage;
 import pages.LoginPage;
 import support.TestBase;
 import utils.DataUtil;
 
-public class CartaImpostoRendaTest extends TestBase {
+import java.util.regex.Pattern;
+
+public class SegundaViaContratoTest extends TestBase {
 
     @Test
-    public void planilhaCalculo(){
+    public void segundaViaContrato(){
 
         String cpfCnpj = DataUtil.readPropertie("cpfCnpj");
 
@@ -21,14 +22,12 @@ public class CartaImpostoRendaTest extends TestBase {
         String contract = DataUtil.readPropertie("contractNumber");
 
         HomePage home = new HomePage(driver);
-        home.closePopUp().selectContract(contract).accessOperation(OperationsEnum.CARTAS_E_DOCUMENTOS).confirmContract();
-
-        LettersAndDocumentsPage lettersAndDocuments = new LettersAndDocumentsPage(driver);
-        lettersAndDocuments.selectLetterOrDocument(OperationsEnum.CARTA_IMPOSTO_RENDA).request();
+        home.closePopUp().selectContract(contract).accessOperation(OperationsEnum.VIA_CONTRATO).confirmContract();
 
         CalculationWorksheetPage calculationWorksheetPage = new CalculationWorksheetPage(driver);
         calculationWorksheetPage.downloadPdf();
 
-        Assert.assertTrue(DataUtil.checkFile(driver, "CARTAO_IMPOSTO_RENDA.pdf"));
+        Assert.assertTrue(DataUtil.findFile(Pattern.compile(
+                "\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{11}.pdf").pattern()));
     }
 }
