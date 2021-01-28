@@ -20,9 +20,14 @@ public class LettersAndDocumentsPage {
     }
 
     public LettersAndDocumentsPage selectLetterOrDocument(OperationsEnum desejado){
-        System.out.println(desejado.getOperation());
         wait.interactElementWithText(lettersAndDocumentsObject.letterDocumentButton, desejado.getOperation()).click();
         ExtentTestManager.getTest().log(LogStatus.INFO, "letter or document: " + desejado);
+        return this;
+    }
+
+    public LettersAndDocumentsPage clickDiscountLetter(){
+        wait.elementToBeClickable(lettersAndDocumentsObject.discountLetterButton).click();
+        ExtentTestManager.getTest().log(LogStatus.INFO, "discount letter");
         return this;
     }
 

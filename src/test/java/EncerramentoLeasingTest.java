@@ -1,10 +1,8 @@
 import enums.OperationsEnum;
+import objects.TermClosureObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CalculationWorksheetPage;
-import pages.HomePage;
-import pages.LettersAndDocumentsPage;
-import pages.LoginPage;
+import pages.*;
 import support.TestBase;
 import utils.DataUtil;
 
@@ -13,13 +11,23 @@ public class EncerramentoLeasingTest extends TestBase {
     @Test
     public void encerramentoLeasing(){
 
-        String cpfCnpj = DataUtil.readPropertie("cpfCnpj");
+        String cpfCnpj = "10360865852";
 
         LoginPage login = new LoginPage(driver);
         login.login(cpfCnpj);
 
+        String contract = "70008236650";
+
         HomePage home = new HomePage(driver);
-        home.closePopUp().clickHomePage().selectInformation(OperationsEnum.ENCERRANDO_LEASING);
+        home.closePopUp()
+                .selectContract(contract)
+                .accessOperation(OperationsEnum.ENCERRANDO_LEASING)
+                .confirmContract();
+
+        TermClosurePage termClosure = new TermClosurePage(driver);
+        termClosure.requestLeasingClosure();
+
+        termClosure.clickTermClosureLeasing();
 
         Assert.assertTrue(DataUtil.checkFile(driver, ""));
     }

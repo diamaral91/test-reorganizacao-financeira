@@ -28,6 +28,6 @@ public class SegundaViaContratoTest extends TestBase {
         calculationWorksheetPage.downloadPdf();
 
         Assert.assertTrue(DataUtil.findFile(Pattern.compile(
-                "\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{11}.pdf").pattern()));
+                "\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{12}.pdf").pattern()));
     }
 }

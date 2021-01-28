@@ -48,7 +48,7 @@ public class TestBase {
         ExtentManager.getReporter().endTest(ExtentTestManager.getTest());
         ExtentManager.getReporter().flush();
 
-        driver.quit();
+//        driver.quit();
     }
 
     protected String getStackTrace(Throwable t) {

@@ -19,6 +19,9 @@ public class LettersAndDocumentsObject {
     @FindBy(id = "send-button")
     public WebElement requestButton;
 
+    @FindBy(id = "document-2")
+    public WebElement discountLetterButton;
+
     @FindBy(css = "#document-1 > span")
     public WebElement LetterProofPaymentButton;
 }
