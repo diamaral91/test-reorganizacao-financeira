@@ -41,8 +41,8 @@ public class FillDetailsBelowPage {
         String aditivo = "Aditivo - Reorganização Financeira.pdf";
         String cet = "CET - Reorganização Financeira.pdf";
 
-        validate = DataUtil.checkFile(driver, aditivo);
-        validate = DataUtil.checkFile(driver, cet);
+        validate = DataUtil.checkFile(aditivo);
+        validate = DataUtil.checkFile(cet);
 
         return validate;
     }

@@ -29,6 +29,6 @@ public class ComprovacaoPagamentoTest extends TestBase {
         CalculationWorksheetPage calculationWorksheetPage = new CalculationWorksheetPage(driver);
         calculationWorksheetPage.downloadPdf();
 
-        Assert.assertTrue(DataUtil.checkFile(driver, "download.pdf"));
+        Assert.assertTrue(DataUtil.checkFile("download.pdf"));
     }
 }

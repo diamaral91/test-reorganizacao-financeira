@@ -34,6 +34,9 @@ public class HomeObject {
     @FindBy(css = "#ulMenuCdc > li > a > span > strong")
     public List<WebElement> contractsList;
 
+    @FindBy(xpath = "//ul[@id='ulMenuLeasing']//strong")
+    public List<WebElement> menuLeasingList;
+
     @FindBy(css = "[data-ng-click='botaoSim()']")
     public WebElement yesBtn;
 

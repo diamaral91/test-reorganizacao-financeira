@@ -19,8 +19,7 @@ public class EncerramentoLeasingTest extends TestBase {
         String contract = "70008236650";
 
         HomePage home = new HomePage(driver);
-        home.closePopUp()
-                .selectContract(contract)
+        home.selectLeasingContract(contract)
                 .accessOperation(OperationsEnum.ENCERRANDO_LEASING)
                 .confirmContract();
 
@@ -29,6 +28,6 @@ public class EncerramentoLeasingTest extends TestBase {
 
         termClosure.clickTermClosureLeasing();
 
-        Assert.assertTrue(DataUtil.checkFile(driver, ""));
+        Assert.assertTrue(DataUtil.closeTab(driver));
     }
 }

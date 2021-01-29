@@ -29,6 +29,6 @@ public class CartaImpostoRendaTest extends TestBase {
         CalculationWorksheetPage calculationWorksheetPage = new CalculationWorksheetPage(driver);
         calculationWorksheetPage.downloadPdf();
 
-        Assert.assertTrue(DataUtil.checkFile(driver, "CARTAO_IMPOSTO_RENDA.pdf"));
+        Assert.assertTrue(DataUtil.checkFile("CARTAO_IMPOSTO_RENDA.pdf"));
     }
 }

@@ -4,7 +4,6 @@ import com.relevantcodes.extentreports.LogStatus;
 import extentReport.ExtentTestManager;
 import org.openqa.selenium.WebDriver;
 
-import javax.annotation.MatchesPattern;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +52,7 @@ public class DataUtil {
         return values;
     }
 
-    public static boolean checkFile(WebDriver driver, String fileName){
+    public static boolean checkFile(String fileName){
         boolean validate = false;
         int count = 0;
 
@@ -66,19 +65,27 @@ public class DataUtil {
                 file.delete();
                 break;
             } else {
-                try {
-                    List<String> abas = new ArrayList<>(driver.getWindowHandles());
-                    driver.switchTo().window(abas.get(1)).quit();
-                    ExtentTestManager.getTest().log(LogStatus.INFO, "closed tab");
-                    return true;
-                } catch (IndexOutOfBoundsException e) {
-                    count++;
-                    Utils.sleep(1);
-                }
+                count++;
+                Utils.sleep(1);
             }
         }
-
         return validate;
+    }
+
+    public static boolean closeTab(WebDriver driver){
+        int count =0;
+        while (count < 10) {
+            try {
+                Utils.sleep(1);
+                List<String> abas = new ArrayList<>(driver.getWindowHandles());
+                driver.switchTo().window(abas.get(1)).quit();
+                break;
+            } catch (IndexOutOfBoundsException e) {
+                count++;
+            }
+        }
+        ExtentTestManager.getTest().log(LogStatus.INFO, "closed tab");
+        return true;
     }
 
     public static boolean findFile(String name){

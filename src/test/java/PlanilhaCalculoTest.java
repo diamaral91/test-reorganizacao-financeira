@@ -29,6 +29,6 @@ public class PlanilhaCalculoTest extends TestBase {
         CalculationWorksheetPage calculationWorksheetPage = new CalculationWorksheetPage(driver);
         calculationWorksheetPage.downloadPdf();
 
-        Assert.assertTrue(DataUtil.checkFile(driver, "PLANILHA_DE_CALCULO.pdf"));
+        Assert.assertTrue(DataUtil.checkFile("PLANILHA_DE_CALCULO.pdf"));
     }
 }

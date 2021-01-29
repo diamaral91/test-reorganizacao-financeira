@@ -32,6 +32,6 @@ public class ContractInstallmentsPage {
 
     public boolean checkBoleto(String contract){
         String fileName = contract;
-        return DataUtil.checkFile(driver, fileName);
+        return DataUtil.checkFile(fileName);
     }
 }
