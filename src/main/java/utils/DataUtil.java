@@ -89,10 +89,16 @@ public class DataUtil {
     }
 
     public static boolean findFile(String name){
-        List<String> files = readFiles();
-        for(String file : files) {
-            if(file.matches(name)){
-                return true;
+        int count=0;
+        while(count < 10) {
+            List<String> files = readFiles();
+            for (String file : files) {
+                if (file.matches(name)) {
+                    return true;
+                } else {
+                    Utils.sleep(1);
+                    count++;
+                }
             }
         }
         return false;

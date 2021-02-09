@@ -11,14 +11,14 @@ import java.util.concurrent.TimeUnit;
 public class DriverWait {
 
     private Wait<WebDriver> wait;
-    private int timeOut = 30;
+    private int timeOut = 20;
 
     public DriverWait(WebDriver driver){
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         waitForJavaScriptCondition(driver);
         waitForJQueryProcessing(driver);
         Utils.sleep(1);
-        wait = new FluentWait<WebDriver>(driver)
+        wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(timeOut))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class)

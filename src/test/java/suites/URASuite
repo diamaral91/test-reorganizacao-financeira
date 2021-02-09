@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="URA" verbose="1" >
+    <test name="regression" >
+        <classes>
+            <class name="EncerramentoLeasingTest" />
+            <class name="HistoricoAtualizacoesTest" />
+
+            <class name="BoletoAtualizacaoTest" />
+            <class name="BoletoQuitacaoTest" />
+            <class name="CartaImpostoRendaTest" />
+            <class name="CartaQuitacaoTest" />
+            <class name="ComprovacaoPagamentoTest" />
+            <class name="PlanilhaCalculoTest" />
+            <class name="SegundaViaContratoTest" />
+        </classes>
+    </test>
+</suite>

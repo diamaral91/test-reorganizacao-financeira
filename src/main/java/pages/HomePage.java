@@ -23,7 +23,7 @@ public class HomePage {
 
     public HomePage closePopUp(){
         wait.elementToBeClickable(home.popUpText).isDisplayed();
-        wait.elementToBeClickable(home.seeMyMessagesButton).click();
+        wait.waitToElementClickNotIntercepted(home.seeMyMessagesButton);
         ExtentTestManager.getTest().log(LogStatus.INFO, "close pop up");
         return this;
     }
