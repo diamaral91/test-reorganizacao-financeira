@@ -13,12 +13,12 @@ public class HistoricoAtualizacoesTest extends TestBase {
     @Test
     public void historicoAtualizacoes(){
 
-        String cpfCnpj = DataUtil.readPropertie("cpfCnpj");
+        String cpfCnpj = "11002425700";
 
         LoginPage login = new LoginPage(driver);
         login.login(cpfCnpj);
 
-        String contract = DataUtil.readPropertie("contractNumber");
+        String contract = "20032308452";
 
         HomePage home = new HomePage(driver);
         home.closePopUp().selectContract(contract).accessOperation(OperationsEnum.HISTORICO_SOLICITACOES).confirmContract();

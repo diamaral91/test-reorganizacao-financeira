@@ -14,7 +14,7 @@ import java.util.List;
 public class RenegotiationsTest extends TestBase {
 
     @Test
-    public void poc(){
+    public void renegotiations(){
         List<String> cpfsCnpjs = DataUtil.readCsv("cpfCnpj");
         List<String> contracts = DataUtil.readCsv("contrato");
         for(int count=0; count < cpfsCnpjs.size(); count++) {
@@ -54,7 +54,7 @@ public class RenegotiationsTest extends TestBase {
 
             driver.quit();
             driver = new ChromeDriver();
-            driver.get(DataUtil.readPropertie("url.hml"));
+            driver.get(DataUtil.readPropertie("url"));
             driver.manage().window().maximize();
         }
     }

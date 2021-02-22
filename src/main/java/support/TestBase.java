@@ -24,7 +24,7 @@ public class TestBase {
     public void beforeMethod(Method method) {
         driver = Browsers.getChrome();
 
-        String url = DataUtil.readPropertie("url.hml.renault");
+        String url = DataUtil.readPropertie("url");
         driver.get(url);
         driver.manage().window().maximize();
 

@@ -32,9 +32,10 @@ public class DataUtil {
     public static List<String> readCsv(String field){
         List<String> values = new ArrayList<>();
 
-        String pathToCsv = System.getProperty("user.dir") + "/src/main/resources/datapool.csv";
+        String pathToCsv = System.getProperty("user.dir") + "/src/main/resources/";
+        String datapoolName = DataUtil.readPropertie("datapool");
         try {
-            BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
+            BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv + datapoolName));
             String row = "";
             while ((row = csvReader.readLine()) != null) {
                 String[] data = row.split(",");
