@@ -16,6 +16,9 @@ public class LettersAndDocumentsObject {
     @FindBy(xpath = "//div[@data-ng-click='selectItem(doc.id)']/span")
     public List<WebElement> letterDocumentButton;
 
+    @FindBy(css = "[class=item-card] > span")
+    public List<WebElement> devLetterDocumentButton;
+
     @FindBy(id = "send-button")
     public WebElement requestButton;
 

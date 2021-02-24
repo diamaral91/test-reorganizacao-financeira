@@ -12,6 +12,7 @@ public enum OperationsEnum {
     HISTORICO_SOLICITACOES("HISTÓRICO DE SOLICITAÇÕES"),
     VIA_CONTRATO("VIA DE CONTRATO"),
     CARTA_QUITACAO("CARTA DE QUITAÇÃO"),
+    CARTA_SAIDA_PAIS("CARTA SAÍDA DO PAÍS"),
     BOLETO("Boleto");
 
     private String operation;

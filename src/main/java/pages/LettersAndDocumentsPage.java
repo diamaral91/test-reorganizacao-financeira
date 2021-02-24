@@ -4,7 +4,9 @@ import com.relevantcodes.extentreports.LogStatus;
 import enums.OperationsEnum;
 import extentReport.ExtentTestManager;
 import objects.LettersAndDocumentsObject;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
 
@@ -20,7 +22,11 @@ public class LettersAndDocumentsPage {
     }
 
     public LettersAndDocumentsPage selectLetterOrDocument(OperationsEnum desejado){
-        wait.interactElementWithText(lettersAndDocumentsObject.letterDocumentButton, desejado.getOperation()).click();
+        try {
+            wait.interactElementWithText(lettersAndDocumentsObject.letterDocumentButton, desejado.getOperation()).click();
+        } catch (TimeoutException e) {
+            wait.interactElementWithText(lettersAndDocumentsObject.devLetterDocumentButton, desejado.getOperation()).click();
+        }
         ExtentTestManager.getTest().log(LogStatus.INFO, "letter or document: " + desejado);
         return this;
     }

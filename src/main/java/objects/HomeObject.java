@@ -34,6 +34,9 @@ public class HomeObject {
     @FindBy(css = "#ulMenuCdc > li > a > span > strong")
     public List<WebElement> contractsList;
 
+    @FindBy(css = "#ulMenuLeasing > li > a > span > strong")
+    public List<WebElement> devContractsList;
+
     @FindBy(xpath = "//ul[@id='ulMenuLeasing']//strong")
     public List<WebElement> menuLeasingList;
 

@@ -6,6 +6,7 @@ import extentReport.ExtentTestManager;
 import objects.HomeObject;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import support.DriverWait;
@@ -35,7 +36,11 @@ public class HomePage {
     }
 
     public HomePage selectContract(String contract){
-        wait.interactElementWithText(home.contractsList, contract).click();
+        try {
+            wait.interactElementWithText(home.contractsList, contract).click();
+        } catch (WebDriverException e) {
+            wait.interactElementWithText(home.devContractsList, contract).click();
+        }
         ExtentTestManager.getTest().log(LogStatus.INFO, "contract: " + contract);
         return this;
     }

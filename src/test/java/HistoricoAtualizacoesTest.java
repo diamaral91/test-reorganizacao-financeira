@@ -13,7 +13,7 @@ public class HistoricoAtualizacoesTest extends TestBase {
     @Test
     public void historicoAtualizacoes(){
 
-        String cpfCnpj = "11002425700";
+        String cpfCnpj = "39871347987";
 
         LoginPage login = new LoginPage(driver);
         login.login(cpfCnpj);
