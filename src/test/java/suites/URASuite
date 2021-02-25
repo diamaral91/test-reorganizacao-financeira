@@ -5,7 +5,7 @@
         <classes>
             <class name="EncerramentoLeasingTest" />
             <class name="HistoricoAtualizacoesTest" />
-
+            <class name="CartaSaidaPaisTest" />
             <class name="BoletoAtualizacaoTest" />
             <class name="BoletoQuitacaoTest" />
             <class name="CartaImpostoRendaTest" />
